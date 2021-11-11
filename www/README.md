@@ -1,5 +1,3 @@
- ![Image from Gyazo](https://i.gyazo.com/34972cf4903191bd92439203291c8134.gif)
-
 <div align="center">
   <h1><code>create-wasm-app</code></h1>
 
