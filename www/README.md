@@ -1,5 +1,6 @@
-<div align="center">
+ ![Image from Gyazo](https://i.gyazo.com/34972cf4903191bd92439203291c8134.gif)
 
+<div align="center">
   <h1><code>create-wasm-app</code></h1>
 
   <strong>An <code>npm init</code> template for kick starting a project that uses NPM packages containing Rust-generated WebAssembly and bundles them with Webpack.</strong>
