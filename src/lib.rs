@@ -1,4 +1,5 @@
 mod utils;
+extern crate web_sys;
 
 use std::fmt;
 use wasm_bindgen::prelude::*;
@@ -8,6 +9,12 @@ use wasm_bindgen::prelude::*;
 #[cfg(feature = "wee_alloc")]
 #[global_allocator]
 static ALLOC: wee_alloc::WeeAlloc = wee_alloc::WeeAlloc::INIT;
+
+macro_rules! log {
+    ($($t:tt)*) => {
+        web_sys::console::log_1(&format!($($t)*).into());
+    }
+}
 
 #[wasm_bindgen]
 #[repr(u8)]
@@ -27,6 +34,7 @@ pub struct Universe {
 #[wasm_bindgen]
 impl Universe {
     pub fn new() -> Universe {
+        utils::set_panic_hook();
         let width = 64;
         let height = 64;
         let cells = (0..width * height)
@@ -92,11 +100,13 @@ impl Universe {
     pub fn set_width(&mut self, width: u32) {
         self.width = width;
         self.cells = (0..width * self.height).map(|_| Cell::Dead).collect();
+        log!("set width: {}", width);
     }
 
     pub fn set_height(&mut self, height: u32) {
         self.height = height;
         self.cells = (0..height * self.width).map(|_| Cell::Dead).collect();
+        log!("set height: {}", height);
     }
 }
 
